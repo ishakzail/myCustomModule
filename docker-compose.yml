@@ -1,0 +1,28 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=123
+    ports:
+      - 3306:3306
+    restart: on-failure
+    networks:
+      - appNet
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8088:80
+    environment:
+      - PMA_PASSWORD=123
+      - PMA_USER=user
+      - PMA_HOST=mysql
+    networks:
+      - appNet
+networks:
+  appNet:
+      driver: bridge
