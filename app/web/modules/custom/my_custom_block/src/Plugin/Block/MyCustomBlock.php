@@ -44,7 +44,7 @@
       if (!$form_state->getValue('block_content')) 
         $form_state->setErrorByName('block_content', $this->t('quotes should not be empty !'));
       if (strlen($form_state->getValue('block_content')) < 20)
-        $form_state->setErrorByName('block_content', $this->t('at least one quote should exists !'));
+        $form_state->setErrorByName('block_content', $this->t('quote_content should have at least 20 character'));
       return $form_state;
     }
 
